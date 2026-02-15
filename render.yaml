@@ -1,0 +1,12 @@
+# Render Blueprint: deploy the Next.js app as a Web Service
+# https://render.com/docs/blueprint-spec
+services:
+  - type: web
+    name: homebot
+    runtime: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_VERSION
+        value: "20"
