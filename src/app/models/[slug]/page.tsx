@@ -8,6 +8,10 @@ interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
+export function generateStaticParams() {
+  return getAllProducts().map((p) => ({ slug: p.slug }));
+}
+
 export default async function ModelPage({ params }: PageProps) {
   const { slug } = await params;
   const product = getProductBySlug(slug);

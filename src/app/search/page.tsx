@@ -1,29 +1,17 @@
-import { searchProducts } from "@/data/products";
-import { ProductCard } from "@/components/ProductCard";
+import { Suspense } from "react";
+import { SearchResults } from "./SearchResults";
 
-interface PageProps {
-  searchParams: Promise<{ q?: string }>;
-}
-
-export default async function SearchPage({ searchParams }: PageProps) {
-  const { q = "" } = await searchParams;
-  const results = searchProducts(q);
-
+export default function SearchPage() {
   return (
-    <div className="mx-auto max-w-6xl px-4 py-8">
-      <h1 className="text-2xl font-bold text-blue-900">
-        {q ? `Search results for “${q}”` : "Search"}
-      </h1>
-
-      {results.length === 0 ? (
-        <p className="mt-6 text-blue-700">No results found.</p>
-      ) : (
-        <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {results.map((product) => (
-            <ProductCard key={product.slug} product={product} />
-          ))}
+    <Suspense
+      fallback={
+        <div className="mx-auto max-w-6xl px-4 py-8">
+          <h1 className="text-2xl font-bold text-blue-900">Search</h1>
+          <p className="mt-6 text-blue-700">Loading…</p>
         </div>
-      )}
-    </div>
+      }
+    >
+      <SearchResults />
+    </Suspense>
   );
 }
