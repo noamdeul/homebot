@@ -46,4 +46,3 @@ None required. The app runs with no external API keys or secrets.
 - `/checkout` — Mock checkout (form + place order, clears cart)
 - `/about` — About page
 - `/search?q=...` — Search results (footer search)
-# homebot
