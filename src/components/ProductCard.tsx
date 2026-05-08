@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useCart } from "@/context/CartContext";
 import type { Product } from "@/data/products";
+import { assetPath } from "@/lib/assetPath";
 
 interface ProductCardProps {
   product: Product;
@@ -25,7 +26,7 @@ export function ProductCard({ product }: ProductCardProps) {
     <article className="flex flex-col rounded-lg border border-blue-200 bg-white shadow-sm overflow-hidden">
       <div className="relative h-48 bg-blue-50">
         <Image
-          src={product.image}
+          src={assetPath(product.image)}
           alt={product.name}
           fill
           className="object-contain object-center"

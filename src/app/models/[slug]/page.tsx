@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getAllProducts, getProductBySlug } from "@/data/products";
+import { assetPath } from "@/lib/assetPath";
 import { AddToCartButton } from "./AddToCartButton";
 
 interface PageProps {
@@ -35,7 +36,7 @@ export default async function ModelPage({ params }: PageProps) {
       <div className="grid gap-8 lg:grid-cols-2">
         <div className="relative aspect-square overflow-hidden rounded-lg bg-blue-50">
           <Image
-            src={product.image}
+            src={assetPath(product.image)}
             alt={product.name}
             fill
             className="object-contain object-center"

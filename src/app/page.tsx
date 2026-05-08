@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { getAllProducts } from "@/data/products";
 import { ProductCard } from "@/components/ProductCard";
+import { assetPath } from "@/lib/assetPath";
 
 export default function HomePage() {
   const products = getAllProducts();
@@ -13,7 +14,7 @@ export default function HomePage() {
             <div className="flex min-h-[16rem] flex-1 flex-col text-center lg:min-h-[20rem] lg:text-left">
               <h1 className="flex flex-1 items-center justify-center lg:justify-start">
                 <Image
-                  src="/logo.png"
+                  src={assetPath("/logo.png")}
                   alt="Homebot"
                   width={560}
                   height={180}
@@ -37,7 +38,7 @@ export default function HomePage() {
             </div>
             <div className="relative h-64 w-full max-w-lg flex-shrink-0 lg:h-80">
               <Image
-                src="/models.png"
+                src={assetPath("/models.png")}
                 alt="Homebot X1, X2, and X3 cleaning robots"
                 fill
                 className="object-contain object-center"

@@ -8,6 +8,12 @@ const basePath = process.env.BASE_PATH ?? "";
 
 const nextConfig = {
   reactStrictMode: true,
+  // Exposed to client bundles so we can prefix `/public` asset URLs (e.g. for
+  // <Image>) — next/image does not apply `basePath` automatically when
+  // `images.unoptimized` is true, which is required for static export.
+  env: {
+    NEXT_PUBLIC_BASE_PATH: basePath,
+  },
   ...(isStaticExport && {
     output: "export",
     trailingSlash: true,
